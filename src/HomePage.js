@@ -1,31 +1,29 @@
 import { Link } from 'react-router-dom'
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Bookshelf from './Bookshelf';
-// import * as booksAPI from './BooksAPI'
+import * as booksAPI from './BooksAPI'
 
 const HomePage = () =>{
-    const bookshelfTitles = ["Currently Reading", "Want to Read", "Read"]
-    // const[bookshelves, setBookShelves] = useState([{
-    //     bookshelf:"",
-    //     title:"",
-    //     authors:""
-    // }])
+    const [currentlyReading, setCurrentlyReading] = useState([]);
+    const [wantToRead, setWantToRead] = useState([]);
+    const [read, setRead] = useState([]);
 
-    // useEffect(()=>{
-    //     let unmounted = false;
-    //     if(!unmounted){
-    //         const getAllBooks = async () =>{
-    //             const res = await booksAPI.getAll();
-    //             setBookShelves(res)
-    //         }
-    //         getAllBooks();
-    //         console.log(bookshelves);
-    //     }
+    useEffect(()=>{
+        let unmounted = false;
+        if(!unmounted){
+            const getAllBooks = async () =>{
+                const res = await booksAPI.getAll();
+                setCurrentlyReading(res.filter((r)=>r.shelf === "currentlyReading"));
+                setWantToRead(res.filter((r)=>r.shelf === "wantToRead"));
+                setRead(res.filter((r)=>r.shelf === "read"));
+            }
+            getAllBooks();
+        }
 
-    //     return ()=>{
-    //         unmounted = true;
-    //     };
-    // },[])
+        return ()=>{
+            unmounted = true;
+        };
+    },[])
 
     return(
       <div className="list-books">
@@ -34,11 +32,9 @@ const HomePage = () =>{
         </div>
         <div className="list-books-content">
           <div>
-            {
-                bookshelfTitles.map(bookshelfTitle=>(
-                    <Bookshelf key={bookshelfTitle} bookshelfTitle={bookshelfTitle}/>
-                ))
-            }
+            <Bookshelf bookshelfTitle= "Currently Reading" booksPerShelf={currentlyReading}/>
+            <Bookshelf bookshelfTitle= "Want to Read" booksPerShelf={wantToRead}/>
+            <Bookshelf bookshelfTitle= "Read" booksPerShelf={read}/>
           </div>
         </div>
         <div className="open-search">
