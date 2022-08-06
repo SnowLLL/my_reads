@@ -23,7 +23,7 @@ const HomePage = () =>{
         return ()=>{
             unmounted = true;
         };
-    },[])
+    },[currentlyReading,wantToRead,read])
 
     return(
       <div className="list-books">

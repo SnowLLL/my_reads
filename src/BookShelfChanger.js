@@ -1,7 +1,30 @@
-const BookShelfChanger = () =>{
+import { useState,useEffect } from "react";
+import * as booksAPI from './BooksAPI';
+
+const BookShelfChanger = ({book}) =>{
+    const [selectShelfValue, setSelectShelfValue] = useState("currentlyReading");
+    const [selectShelfClicked, setSelectShelfClicked]=useState(false);
+
+    const handleSelectChange = (event) =>{
+        event.preventDefault();
+        setSelectShelfValue(event.target.value);
+        setSelectShelfClicked (true);
+    }
+
+    useEffect(()=>{
+        if(selectShelfClicked){
+            const updateBookShelf = async () =>{
+                await booksAPI.update(book,selectShelfValue);
+            }
+            updateBookShelf();
+            setSelectShelfClicked(false);
+        }
+        return ()=> setSelectShelfClicked(false);
+    },[book,selectShelfValue,selectShelfClicked])
+
     return (
       <div className="book-shelf-changer">
-        <select>
+        <select value={book.shelf} onChange={handleSelectChange}>
           <option value="none" disabled>
             Move to...
           </option>

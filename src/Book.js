@@ -11,10 +11,10 @@ const Book = ({book}) =>{
                         width: 128,
                         height: 193,
                         backgroundImage:
-                        `url("${book.imageLinks.thumbnail }")`,
+                        `url("${book.imageLinks.thumbnail}")`,
                     }}
                     ></div>
-                    <BookShelfChanger />
+                    <BookShelfChanger book={book}/>
                 </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.authors}</div>
