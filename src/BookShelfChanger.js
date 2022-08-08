@@ -2,7 +2,7 @@ import { useState,useEffect } from "react";
 import * as booksAPI from './BooksAPI';
 
 const BookShelfChanger = ({book}) =>{
-    const [selectShelfValue, setSelectShelfValue] = useState("currentlyReading");
+    const [selectShelfValue, setSelectShelfValue] = useState("");
     const [selectShelfClicked, setSelectShelfClicked]=useState(false);
 
     const handleSelectChange = (event) =>{
@@ -20,11 +20,11 @@ const BookShelfChanger = ({book}) =>{
             setSelectShelfClicked(false);
         }
         return ()=> setSelectShelfClicked(false);
-    },[book,selectShelfValue,selectShelfClicked])
+    },[selectShelfClicked])
 
     return (
       <div className="book-shelf-changer">
-        <select value={book.shelf} onChange={handleSelectChange}>
+        <select value={selectShelfValue==="" ? book.shelf : selectShelfValue } onChange={handleSelectChange}>
           <option value="none" disabled>
             Move to...
           </option>

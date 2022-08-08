@@ -7,6 +7,7 @@ const HomePage = () =>{
     const [currentlyReading, setCurrentlyReading] = useState([]);
     const [wantToRead, setWantToRead] = useState([]);
     const [read, setRead] = useState([]);
+    const [allBooks, setAllbooks] = useState([]);
 
     useEffect(()=>{
         let unmounted = false;
@@ -16,6 +17,7 @@ const HomePage = () =>{
                 setCurrentlyReading(res.filter((r)=>r.shelf === "currentlyReading"));
                 setWantToRead(res.filter((r)=>r.shelf === "wantToRead"));
                 setRead(res.filter((r)=>r.shelf === "read"));
+                setAllbooks([...currentlyReading, ...wantToRead, ...read]);
             }
             getAllBooks();
         }
@@ -38,7 +40,7 @@ const HomePage = () =>{
           </div>
         </div>
         <div className="open-search">
-          <Link to="/search">Add a book</Link>
+          <Link to="/search" state={{allBooks: allBooks}}>Add a book</Link>
         </div>
       </div>
     );

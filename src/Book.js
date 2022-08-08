@@ -11,7 +11,7 @@ const Book = ({book}) =>{
                         width: 128,
                         height: 193,
                         backgroundImage:
-                        `url("${book.imageLinks.thumbnail}")`,
+                        `url("${ typeof book.imageLinks !== 'undefined' ? book.imageLinks.thumbnail : ''}")`,
                     }}
                     ></div>
                     <BookShelfChanger book={book}/>
