@@ -42,13 +42,16 @@ To view project right away:
 
 * [React](https://reactjs.org/docs/getting-started.html) - The JavaScript library for building user interfaces.
 
+
 ### `Home Page`
 
 ![homepage](https://github.com/SnowLLL/my_reads/blob/2b28102c0f5e428e08caa2b9d508aea1b7c4f988/src/icons/homepage.png)
 
+
 ### `Search Page`
 
 ![searchPage](https://github.com/SnowLLL/my_reads/blob/2b28102c0f5e428e08caa2b9d508aea1b7c4f988/src/icons/searchPage.png)
+
 
 ### `Book Shelf Changer`
 
