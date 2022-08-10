@@ -1,4 +1,5 @@
 import Book from "./Book";
+import PropTypes from 'prop-types'
 
 const Bookshelf = ({bookshelfTitle, booksPerShelf}) =>{
     
@@ -13,5 +14,10 @@ const Bookshelf = ({bookshelfTitle, booksPerShelf}) =>{
       </div>
     );
 }
+
+Bookshelf.propTypes = {
+  bookshelfTitle: PropTypes.string,
+  booksPerShelf: PropTypes.array
+};
 
 export default Bookshelf;

@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import * as booksAPI from './BooksAPI';
+import PropTypes from 'prop-types'; 
 
 const BookShelfChanger = ({book}) =>{
     const [selectShelfValue, setSelectShelfValue] = useState("");
@@ -38,5 +39,9 @@ const BookShelfChanger = ({book}) =>{
       </div>
     )
 }
+
+BookShelfChanger.propTypes = {
+  book: PropTypes.object
+};
 
 export default BookShelfChanger;

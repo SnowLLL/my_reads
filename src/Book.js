@@ -1,4 +1,5 @@
 import BookShelfChanger from "./BookShelfChanger";
+import PropTypes from 'prop-types'; 
 
 const Book = ({book}) =>{
     return (
@@ -22,5 +23,9 @@ const Book = ({book}) =>{
         </li>
     );
 }
+
+Book.propTypes = {
+    book: PropTypes.object
+};
 
 export default Book;
